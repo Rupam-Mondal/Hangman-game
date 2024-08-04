@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Randomwords } from "../Randomwords/Randomwords"
 import MaskedText from "../MaskedText/MaskedText"
+import Keyboardkeys from "../Keyboardkeys/Keyboardkey"
+import './hint.css'
 
 function Playgame(){
     const [randomobj, setObj] = useState(Randomwords)
@@ -8,11 +10,12 @@ function Playgame(){
     return(
         <>
             <h1>Welcome to The Hangman Game</h1>
-            <p>Hint:-{randomobj.hint}</p>
             <MaskedText
                 word={randomobj.word}
                 usedLetters={usedLetters}
             />
+            <p className="hint">Hint:-{randomobj.hint}</p>
+            <Keyboardkeys/>
         </>
     )
 }
