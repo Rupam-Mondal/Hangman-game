@@ -9,6 +9,8 @@ function Playgame(){
     const [usedLetters, setLetters] = useState([])
 
     function handleclick(e) {
+        console.log(randomobj.word)
+        console.log(randomobj.word.includes(e))
         console.log(e)
         setLetters([...usedLetters, e])
     }

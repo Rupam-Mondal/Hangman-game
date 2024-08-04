@@ -4,12 +4,11 @@
 }
 
 .maskedtext div{
-    letter-spacing: 50px;
-    font-size: 60px;
+    font-size: 40px;
     box-sizing: border-box;
     display: flex;
     height: 100px;
-    width: 90px;
+    width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;

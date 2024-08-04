@@ -9,7 +9,7 @@ function MaskedText({word , usedLetters}){
             <div className="maskedtext">
                 {
                     letters.map((v , i) => (
-                        <div><p>{v}</p></div>
+                        <div key={i}><p>{v}</p></div>
                     ))
                 }
             </div>
