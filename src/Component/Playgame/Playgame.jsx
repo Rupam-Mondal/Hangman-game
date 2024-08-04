@@ -6,7 +6,12 @@ import './hint.css'
 
 function Playgame(){
     const [randomobj, setObj] = useState(Randomwords)
-    const [usedLetters , setLetters] = useState(['A' , 'C'])
+    const [usedLetters , setLetters] = useState([])
+    function handleclick(v){
+        const newLetters = [...usedLetters , v]
+        setLetters(newLetters)
+        console.log(newLetters)
+    }
     return(
         <>
             <h1>Welcome to The Hangman Game</h1>
@@ -15,7 +20,9 @@ function Playgame(){
                 usedLetters={usedLetters}
             />
             <p className="hint">Hint:-{randomobj.hint}</p>
-            <Keyboardkeys/>
+            <Keyboardkeys
+                onclickHandler={handleclick}
+            />
         </>
     )
 }
