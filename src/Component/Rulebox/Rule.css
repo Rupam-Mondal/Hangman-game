@@ -1,0 +1,33 @@
+.Parent{
+    position: absolute;
+    z-index: 2;
+    background-color:rgb(226, 149, 47);
+    height: 450px;
+    width: 600px;
+    top: 15%;
+    box-sizing: border-box;
+    padding: 40px;
+
+}
+.rulebox{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.note-txt{
+    height: 70%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.str-btn{
+    height: 40px;
+    width: 100px;
+    border: none;
+    background-color: rgb(238, 181, 95);
+    border-radius: 10px;
+    cursor: pointer;
+}

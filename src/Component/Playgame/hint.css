@@ -3,3 +3,15 @@
     color: red;
     letter-spacing: 3px;
 }
+.resetBtn{
+    background-color: rgb(12, 38, 208);
+    border: none;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: "Reggae One", system-ui;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-bottom: 3%;
+}
