@@ -1,4 +1,16 @@
-.maskedtext p{
-    letter-spacing: 40px;
-    font-size: 70px;
+.maskedtext{
+    display: flex;
+    box-sizing: border-box;
+}
+
+.maskedtext div{
+    letter-spacing: 50px;
+    font-size: 60px;
+    box-sizing: border-box;
+    display: flex;
+    height: 100px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

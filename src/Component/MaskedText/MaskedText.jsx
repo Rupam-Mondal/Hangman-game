@@ -3,11 +3,16 @@ import { Maskedlogic } from "./Maskedlogic"
 import './MaskedText.css'
 
 function MaskedText({word , usedLetters}){
-    const w = Maskedlogic(word , usedLetters)
-    console.log(w)
+    const letters = Maskedlogic(word , usedLetters).split('')
     return(
         <>
-            <div className="maskedtext"><p>{w}</p></div>
+            <div className="maskedtext">
+                {
+                    letters.map((v , i) => (
+                        <div><p>{v}</p></div>
+                    ))
+                }
+            </div>
         </>
     )
 }

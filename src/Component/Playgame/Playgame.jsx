@@ -6,11 +6,11 @@ import './hint.css'
 
 function Playgame(){
     const [randomobj, setObj] = useState(Randomwords)
-    const [usedLetters , setLetters] = useState([])
-    function handleclick(v){
-        const newLetters = [...usedLetters , v]
-        setLetters(newLetters)
-        console.log(newLetters)
+    const [usedLetters, setLetters] = useState([])
+
+    function handleclick(e) {
+        console.log(e)
+        setLetters([...usedLetters, e])
     }
     return(
         <>
