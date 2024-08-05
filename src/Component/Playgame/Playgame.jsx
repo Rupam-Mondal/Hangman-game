@@ -4,27 +4,40 @@ import MaskedText from "../MaskedText/MaskedText"
 import Keyboardkeys from "../Keyboardkeys/Keyboardkey"
 import './hint.css'
 import { RuleBox } from "../Rulebox/RuleBox"
+import { WinnerBox } from "../WinnerBox/WinnerBox"
+import { CheckWinner } from "./WinnigLogic"
 
 function Playgame(){
     const [randomobj, setObj] = useState(Randomwords)
     const [usedLetters, setLetters] = useState([])
     const objectword = randomobj.word.toUpperCase()
     const [winningString, setWinningString] = useState("");
+    const [winner , setWinner] = useState(false)
     useEffect(() => {
         console.log(winningString)
     } , [winningString])
 
-    function handleclick(e) {
-        if(objectword.includes(e)){
-            setWinningString(prev => prev + e);
-            console.log("Correct")
+    useEffect(() => {
+        const winner = CheckWinner(randomobj.word, usedLetters);
+        if (winner) {
+            console.log("Winner")
+            setWinner(true)
+            return
         }
-        else{
-            console.log("Incorrect")
-        }
-        setLetters([...usedLetters, e])
-    }
+    }, [usedLetters, randomobj.word]);
 
+    function handleclick(e) {
+        if(!winner){
+            if (objectword.includes(e)) {
+                setWinningString(prev => prev + e);
+                console.log("Correct")
+            }
+            else {
+                console.log("Incorrect")
+            }
+            setLetters([...usedLetters, e])
+        }
+    }
     function resetHandler(){
         setObj(Randomwords)
         setLetters([])
@@ -42,6 +55,7 @@ function Playgame(){
             />
             <button className="resetBtn" onClick={resetHandler}>Reset</button>
             <RuleBox/>
+            <WinnerBox winner={winner}/>
         </>
     )
 }
