@@ -13,6 +13,20 @@ function Playgame(){
     const objectword = randomobj.word.toUpperCase()
     const [winningString, setWinningString] = useState("");
     const [winner , setWinner] = useState(false)
+
+    const [display, setDisplay] = useState('none')
+    useEffect(() => {
+        if (winner) {
+            setDisplay('block')
+        }
+    }, [winner])
+    function Restart(){
+        setObj(Randomwords)
+        setLetters([])
+        setDisplay('none')
+    }
+
+
     useEffect(() => {
         console.log(winningString)
     } , [winningString])
@@ -55,7 +69,10 @@ function Playgame(){
             />
             <button className="resetBtn" onClick={resetHandler}>Reset</button>
             <RuleBox/>
-            <WinnerBox winner={winner}/>
+            <WinnerBox 
+            display={display}
+            onclickHandle={Restart}
+            />
         </>
     )
 }
