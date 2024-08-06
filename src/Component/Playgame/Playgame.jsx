@@ -66,6 +66,8 @@ function Playgame(){
             <p className="hint">Hint:-{randomobj.hint}</p>
             <Keyboardkeys
                 onclickHandler={handleclick}
+                word={objectword}
+                usedletter={usedLetters}
             />
             <button className="resetBtn" onClick={resetHandler}>Reset</button>
             <RuleBox/>

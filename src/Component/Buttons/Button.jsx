@@ -1,8 +1,8 @@
-import './Button.css'
-function Button({value , onclickHandler}){
+
+function Button({value , onclickHandler , className}){
     return (
         <>
-            <button className="button" onClick={onclickHandler}>{value}</button>
+            <button className={className} onClick={onclickHandler}>{value}</button>
         </>
     )
 }
