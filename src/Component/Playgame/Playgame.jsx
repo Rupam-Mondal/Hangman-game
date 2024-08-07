@@ -6,13 +6,15 @@ import './hint.css'
 import { RuleBox } from "../Rulebox/RuleBox"
 import { WinnerBox } from "../WinnerBox/WinnerBox"
 import { CheckWinner } from "./WinnigLogic"
+import { Hangman } from "../Hangman/Hangman"
 
-function Playgame(){
+function Playgame() {
     const [randomobj, setObj] = useState(Randomwords)
     const [usedLetters, setLetters] = useState([])
     const objectword = randomobj.word.toUpperCase()
     const [winningString, setWinningString] = useState("");
-    const [winner , setWinner] = useState(false)
+    const [winner, setWinner] = useState(false)
+    const [step , setStep] = useState(0)
 
     const [display, setDisplay] = useState('none')
     useEffect(() => {
@@ -20,7 +22,7 @@ function Playgame(){
             setDisplay('block')
         }
     }, [winner])
-    function Restart(){
+    function Restart() {
         setObj(Randomwords)
         setLetters([])
         setDisplay('none')
@@ -29,7 +31,7 @@ function Playgame(){
 
     useEffect(() => {
         console.log(winningString)
-    } , [winningString])
+    }, [winningString])
 
     useEffect(() => {
         const winner = CheckWinner(randomobj.word, usedLetters);
@@ -41,40 +43,48 @@ function Playgame(){
     }, [usedLetters, randomobj.word]);
 
     function handleclick(e) {
-        if(!winner){
+        if (!winner) {
             if (objectword.includes(e)) {
                 setWinningString(prev => prev + e);
                 console.log("Correct")
             }
             else {
+                setStep(step + 1)
                 console.log("Incorrect")
             }
             setLetters([...usedLetters, e])
         }
     }
-    function resetHandler(){
+    function resetHandler() {
         setObj(Randomwords)
         setLetters([])
     }
-    return(
+    return (
         <>
-            <h1>Welcome to The Hangman Game</h1>
-            <MaskedText
-                word={randomobj.word}
-                usedLetters={usedLetters}
-            />
-            <p className="hint">Hint:-{randomobj.hint}</p>
-            <Keyboardkeys
-                onclickHandler={handleclick}
-                word={objectword}
-                usedletter={usedLetters}
-            />
-            <button className="resetBtn" onClick={resetHandler}>Reset</button>
-            <RuleBox/>
-            <WinnerBox 
-            display={display}
-            onclickHandle={Restart}
-            />
+            <div className="left-div">
+                <h1>Welcome to The Hangman Game</h1>
+                <MaskedText
+                    word={randomobj.word}
+                    usedLetters={usedLetters}
+                />
+                <p className="hint">Hint:-{randomobj.hint}</p>
+                <Keyboardkeys
+                    onclickHandler={handleclick}
+                    word={objectword}
+                    usedletter={usedLetters}
+                />
+                <button className="resetBtn" onClick={resetHandler}>Reset</button>
+                <RuleBox />
+                <WinnerBox
+                    display={display}
+                    onclickHandle={Restart}
+                />
+            </div>
+            <div className="right-div">
+                <Hangman
+                    step={step}
+                />
+            </div>
         </>
     )
 }
