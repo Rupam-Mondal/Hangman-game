@@ -15,13 +15,18 @@ function Playgame() {
     const [winningString, setWinningString] = useState("");
     const [winner, setWinner] = useState(false)
     const [step , setStep] = useState(0)
+    const [attempt , setAttemp] = useState(0)
+    const [gameover , setGameOver] = useState(false)
 
     const [display, setDisplay] = useState('none')
     useEffect(() => {
-        if (winner) {
+        if (winner && !gameover) {
             setDisplay('block')
         }
-    }, [winner])
+        if(gameover){
+            setDisplay('block')
+        }
+    }, [winner , gameover])
     function Restart() {
         setObj(Randomwords)
         setLetters([])
@@ -45,11 +50,19 @@ function Playgame() {
     function handleclick(e) {
         if (!winner) {
             if (objectword.includes(e)) {
+                setAttemp(attempt + 1)
+                if(attempt >= objectword.length + 3){
+                    setGameOver(true)
+                }
                 setWinningString(prev => prev + e);
                 console.log("Correct")
             }
             else {
+                setAttemp(attempt + 1)
                 setStep(step + 1)
+                if (attempt >= objectword.length + 3) {
+                    setGameOver(true)
+                }
                 console.log("Incorrect")
             }
             setLetters([...usedLetters, e])
@@ -78,9 +91,11 @@ function Playgame() {
                 <WinnerBox
                     display={display}
                     onclickHandle={Restart}
+                    content={gameover? "Game over":"You won!"}
                 />
             </div>
             <div className="right-div">
+                <div>{`Number of attemps : ${attempt}`}</div>
                 <Hangman
                     step={step}
                 />
