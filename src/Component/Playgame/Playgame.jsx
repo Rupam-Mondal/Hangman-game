@@ -31,6 +31,9 @@ function Playgame() {
         setObj(Randomwords)
         setLetters([])
         setDisplay('none')
+        setWinner(false)
+        setAttemp(0)
+        setStep(0)
     }
 
 
