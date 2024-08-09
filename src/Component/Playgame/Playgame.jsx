@@ -74,6 +74,8 @@ function Playgame() {
     function resetHandler() {
         setObj(Randomwords)
         setLetters([])
+        setAttemp(0)
+        setStep(0)
     }
     return (
         <>

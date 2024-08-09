@@ -3,7 +3,7 @@
 This is a simple hangman game built using React. The game allows players to guess letters to uncover a hidden word. 
 
 ## Demo
-- [Click here](https://66b5899d416cd6de7221a94c--gentle-babka-4a55d2.netlify.app/)
+- [Click here](https://66b59dfca1159ff0be7896de--astounding-monstera-5ee069.netlify.app/)
 ## Screenshots
 
 Here are some screenshots of the hangman game:
